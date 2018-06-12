@@ -1,0 +1,24 @@
+PATH
+  remote: .
+  specs:
+    mdopen (0.1.0)
+      os (~> 1.0)
+      redcarpet (~> 3.4)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    os (1.0.0)
+    rake (10.4.2)
+    redcarpet (3.4.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.16)
+  mdopen!
+  rake (~> 10.0)
+
+BUNDLED WITH
+   1.16.2

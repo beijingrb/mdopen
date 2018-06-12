@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+require 'mdopen'
+
+def help
+  puts <<USAGE
+mdopen is a command tool to preview your Markdown file.
+
+Usage: mdopen <markdown_file_path>
+
+"README" or "README.md" will be used as input filename if the <markdown_file_path> is omitted.
+
+USAGE
+end
+
+md_file = if File.exist?(ARGV[0] || "")
+            ARGV[0]
+          elsif File.exist?("./README")
+            "./README"
+          elsif File.exist?("./README.md")
+            "./README.md"
+          end
+help() if md_file.nil?
+Mdopen.preview(File.read(md_file))
