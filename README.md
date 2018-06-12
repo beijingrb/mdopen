@@ -2,7 +2,7 @@
 
 `mdopen` is a command tool to preview your Markdown file.
 
-I ever want to write such a tool to preview `README` file in some git repository in terminal. And then I find [mdopen](https://github.com/romanyx/mdopen) witten in Golang before I start. Then I migrate it to Ruby.
+I ever thought to write such a tool to preview `README` file in some git repository when working in terminal. And then I find [mdopen](https://github.com/romanyx/mdopen) written in Golang before I start. Then I migrate it to Ruby.
 
 Hope it helpful~
 
