@@ -12,6 +12,11 @@ Usage: mdopen <markdown_file_path>
 USAGE
 end
 
+if !ARGV[0].nil? && ARGV[0] =~ /^-{,2}help$/
+  help
+  exit(1)
+end
+
 md_file = if File.exist?(ARGV[0] || "")
             ARGV[0]
           elsif File.exist?("./README")
@@ -19,5 +24,9 @@ md_file = if File.exist?(ARGV[0] || "")
           elsif File.exist?("./README.md")
             "./README.md"
           end
-help() if md_file.nil?
-Mdopen.preview(File.read(md_file))
+
+if md_file.nil?
+  help
+else
+  Mdopen.preview(File.read(md_file))
+end
