@@ -16,7 +16,7 @@ Hope it helpful~
 
     $ mdopen [markdown_file]
 
-`README` or `README.md` will be used in turn as an input filename if the [markdown_file] is omitted or not exists.
+`README` or `README.md` will be used in turn as an input filename if the [markdown_file] is omitted or not exists. So just run `mdopen` when you want to view the `README` file.
 
 ## Development
 
