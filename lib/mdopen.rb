@@ -1,8 +1,8 @@
-require "os"
+require 'os'
 require 'redcarpet'
 require 'tempfile'
-require "mdopen/version"
-require "mdopen/erb_template"
+require 'mdopen/version'
+require 'mdopen/erb_template'
 
 module Mdopen
   class << self
