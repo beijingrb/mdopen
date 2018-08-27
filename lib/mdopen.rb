@@ -1,8 +1,8 @@
 require 'os'
 require 'redcarpet'
 require 'tempfile'
+require 'tilt/erb'
 require 'mdopen/version'
-require 'mdopen/erb_template'
 
 module Mdopen
   class << self
@@ -14,13 +14,10 @@ module Mdopen
     end
 
     def erb_render(content, html_file_path)
-      erb_t = Mdopen::ErbTemplate.new(content, get_template)
-      erb_t.save(html_file_path)
-    end
-
-    def get_template
-      template_file = File.join(__dir__, 'templates/github.html.erb')
-      File.read(template_file)
+      template_path = File.join(__dir__, 'templates/github.html.erb')
+      template = Tilt::ERBTemplate.new(template_path)
+      output = template.render(self, content: content)
+      File.write(html_file_path, output)
     end
 
     def md2html(md_file)
