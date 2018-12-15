@@ -21,7 +21,17 @@ module Mdopen
     end
 
     def md2html(md_file)
-      parser = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, fenced_code_blocks: true)
+      parser = Redcarpet::Markdown.new(
+        Redcarpet::Render::HTML.new,
+        fenced_code_blocks: true,
+        tables: true,
+        autolink: true,
+        space_after_headers: true,
+        highlight: true,
+        quote: true,
+        strikethrough: true,
+        superscript: true,
+        no_intra_emphasis: true)
       parser.render(md_file)
     end
 
