@@ -8,16 +8,18 @@ module Mdopen
   class << self
     def preview(md_file)
       content = md2html(md_file)
-      html_file_path = tmp_path
-      erb_render(content, html_file_path)
+      tmp_file = new_tmpfile
+      html_file_path = tmp_file.path
+      erb_render(content, tmp_file)
       system "#{open_cmd} file://#{html_file_path}"
     end
 
-    def erb_render(content, html_file_path)
+    def erb_render(content, tmp_file)
       template_path = File.join(__dir__, 'templates/github.html.erb')
       template = Tilt::ERBTemplate.new(template_path)
       output = template.render(self, content: content)
-      File.write(html_file_path, output)
+      tmp_file.write(output)
+      tmp_file.close
     end
 
     def md2html(md_file)
@@ -45,10 +47,12 @@ module Mdopen
       end
     end
 
-    def tmp_path
+    def new_tmpfile
       filename = tmp_filename
-      tmp = Tempfile.new([filename, ".html"])
-      tmp.path
+      tmp_file = Tempfile.new([filename, '.html'])
+      # prevent tempfile from deleting by GC
+      ObjectSpace.undefine_finalizer(tmp_file)
+      tmp_file
     end
 
     def tmp_filename
