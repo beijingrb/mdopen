@@ -10,7 +10,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     os (1.1.1)
-    rake (10.4.2)
+    rake (13.0.3)
     redcarpet (3.5.1)
     tilt (2.0.10)
 
@@ -20,7 +20,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.16)
   mdopen!
-  rake (~> 10.0)
+  rake (~> 13.0)
 
 BUNDLED WITH
    1.16.2
